@@ -1,86 +1,27 @@
-let x = "asd"
-let y = 12
-let z = false
+console.log("hello world")
 
-let arr = ["egy", "kettő", "három"]
-let arr2 = [10, 2, 67]
-let arr3 = [true, false ,true]
-let arr4 = ["string", 1, false]
+function domManipulation () {
 
-let obj1 = {
-    key1: "value",
-    key2: 101,
-    key3: "FileSystemEntry",
-    key4: [
-        "cat",
-        "dog",
-        "chicken"
-    ],
-    key5: {
-        nestedKey: "text",
-        nestedKey2: 66
-    },
-    users: [
-        {
-        name: "Gipsz Jakab",
-        age: 28,
-        isActive: true,
-        pets: [{
-            name: "Mirci", 
-            type: "cat" 
-        },
-        {
-            name: "Kifli",
-            type: "dog" 
-        }
-        ]
-        },
-        {
-            name: "John Doe",
-            age: 66,
-            isActive: false,
-            pets: ["Jani", "Laci"]
-        }
-    ]
+  // eseményfigyelőnek legalább két paramétert meg kell adni, ez az eseményfigyelő azt csinálja hogy a függvény akkor fusson le ha betölött a weblap
+
+const rootElement = document.querySelector ('#root')
+console.log(rootElement)
+rootElement.innerHTML= "this is done by dom manipulation" }
+
+function logClick () {
+    console.log('clicked')
 }
 
-/* console.log(obj1.users[0].pets[0].name)
-console.log(obj1["users"][0]["pets"][0]["name"]) */
+let tickCount = 0
 
-/* function myFunc () {
-    console.log("this is my function")
+function logTick () {
+    console.log(`tick ${tickCount}`)
+    tickCount++
 }
 
-myFunc () */
+window.addEventListener('load', domManipulation)
 
-function greetMe (name) {   // itt parameter a name
-    console.log(`hello ${name}!`)
-}
+window.addEventListener('click', logClick)
 
-//greetMe("Ricsi")  //itt mar argument a Ricsi
-
-/* function addTwoNumbers(number1, number2) {
-   let sum = number1 + number2 
-   console.log(`the sum of two numbers (${number1}, ${number2}) is: ${sum}`)
-    return sum
-} */
-
-// addTwoNumbers(10,2)   // NaN = Not a number
-// addTwoNumbers("kutya","cica")
-
-//let resultOfAddTwoNumbers = addTwoNumbers (10,2)  // ki van mentve egy változóba a visszatérési érték
-
-/* console.log(`the result of resultOfAddTwoNumbers: ${resultOfAddTwoNumbers}`) */
-
-//callback: azok a függvények, amiket nem úgy használunk mint az előbbieket, hanem polyan függvény amit másik függvénynek adok át argumentumként és a másik függvény futtatja le
-
-function cbExample () {
-    console.log("i am a callback function")
-}
-
-function funcExample(name, callback) {
-    console.log(`hello ${name}`)
-    callback ()
-}
-
-funcExample("Ricsi", cbExample) // amikor callback főggvényt adok át, nem teszek zárójelet utána
+window.setInterval(logTick, 1000)   // a setInterval olyan függvény ami bizonyos időnként lefuttat egy callback függvényt ,
+// ez azt mondja most hogy a logticket 1000 millisekundumonkent futtassa le, azaz másodpercenként
